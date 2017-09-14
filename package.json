@@ -4,7 +4,7 @@
   "description": "MERN blog app with auth",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "nodemon app.js"
   },
   "author": "TheoJA",
   "license": "ISC",
@@ -12,6 +12,9 @@
     "body-parser": "^1.18.0",
     "express": "^4.15.4",
     "express-promise-router": "^2.0.0",
-    "morgan": "^1.8.2"
+    "joi": "^10.6.0",
+    "mongoose": "^4.11.11",
+    "morgan": "^1.8.2",
+    "nodemon": "^1.12.0"
   }
 }
