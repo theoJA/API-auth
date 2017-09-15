@@ -9,12 +9,17 @@
   "author": "TheoJA",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.0",
     "express": "^4.15.4",
     "express-promise-router": "^2.0.0",
     "joi": "^10.6.0",
+    "jsonwebtoken": "^8.0.1",
     "mongoose": "^4.11.11",
     "morgan": "^1.8.2",
-    "nodemon": "^1.12.0"
+    "nodemon": "^1.12.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "passport-local": "^1.0.0"
   }
 }
