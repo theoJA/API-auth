@@ -21,12 +21,19 @@ module.exports = {
 
     const { email, password } = req.value.body;
     // Check if user with same email exists
-    const foundUser = await User.findOne({ email });
+    // Enclosing in quotes is a way to let Mongoose look inside nested objects
+    const foundUser = await User.findOne({ "local.email": email });
     if (foundUser) { 
       return res.status(403).json({ error: 'Email is already in use' });
     }
     // Create a new user
-    const newUser = new User({ email, password });
+    const newUser = new User({ 
+      method: 'local',
+      local: {
+        email: email, 
+        password: password 
+      }     
+    });
     await newUser.save();
     // Generate a token for the new user
     const token = signToken(newUser);
@@ -38,7 +45,13 @@ module.exports = {
     // Genereate a token
     const token = signToken(req.user);
     res.status(200).json({ token });
+  },
 
+  googleOauth: async (req, res, next) => {
+    // genereate token
+    console.log('req.user', req.user);
+    const token = signToken(req.user);
+    res.status(200).json({ token });
   },
 
   secret: async (req, res, next) => {
