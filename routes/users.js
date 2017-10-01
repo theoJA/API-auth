@@ -8,6 +8,7 @@ const UsersController = require('../controllers/users')
 
 const passportSignIn = passport.authenticate('local', { session: false });
 const passportJWT = passport.authenticate('jwt', { session: false });
+const passportGoogle = passport.authenticate('googleToken', { session: false });
 
 router.route('/signup')
   .post(validateBody(schemas.authSchema), 
@@ -17,6 +18,9 @@ router.route('/signin')
   .post(validateBody(schemas.authSchema), 
         passportSignIn, 
         UsersController.signIn);
+
+router.route('/oauth/google')
+  .post(passportGoogle, UsersController.googleOauth);
 
 router.route('/secret')
   .get(passportJWT, 
